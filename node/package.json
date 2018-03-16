@@ -1,0 +1,22 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "logindemo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Saish S. Shinde",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "client-sessions": "^0.8.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "express-validator": "^5.0.3",
+    "jade": "^1.11.0",
+    "morgan": "^1.9.0",
+    "mysql": "^2.15.0"
+  }
+}
