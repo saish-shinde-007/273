@@ -1,0 +1,31 @@
+var assert = require('assert');
+var supertest = require("supertest");
+var should = require("should");
+
+
+var server = supertest.agent("http://localhost:3001");
+
+describe("Mocha unit test",function(){
+
+    // #1 should return home page
+
+    it("should return home page",function(done){
+
+        // calling home page api
+        server
+            .post("/login")
+            .expect("Content-type",/json/)
+            .send({
+                username: 'saish.shinde@sjsu.edu',
+                password: 'saish09'
+            })
+            .expect(200) // THis is HTTP response
+            .end(function(err,res){
+                res.body.status.should.be.equal(200);
+                res.body.email.should.equal("saish.shinde@sjsu.edu");
+                console.log("test done");
+                done();
+            });
+    });
+
+});
