@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Button } from 'reactstrap';
 import image from './mainlogo.JPG';
+import '../index.css';
+import images from './userpic.jpg';
 import {
     Collapse,
     Navbar,
@@ -13,7 +15,6 @@ import {
 } from 'reactstrap';
 import {actionlogout} from "../actions/loginactions";
 import history from "./history";
-
 
 class profile extends React.Component {
     constructor(props) {
@@ -68,11 +69,30 @@ class profile extends React.Component {
                             <NavLink href="/myproject">My Project</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/profile">DashBoard</NavLink>
+                            <NavLink href="/dashboard">DashBoard</NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>
             </Navbar>
+    <h3 class="headalign">Welcome {this.props.email}+!!!</h3>
+    <div className="container-fluid">
+        <div className="row">
+            <div className="col-12">
+                <div className="card card-inverse">
+                    <div className="card-block">
+                        <div className="row">
+                            <div className="col-md-4 col-sm-4 text-center">
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                                <h2 class="card-title"><strong>Username: </strong>{this.props.username}</h2>
+                                <p class="card-text"><strong>Email: {this.props.email}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
         :
         history.push('/')}
@@ -90,7 +110,9 @@ const mapstatetoprops=(stores)=>
 {
     return {
         logout : stores.stores.status,
-        loginstatus : stores.stores.loginstatus
+        loginstatus : stores.stores.loginstatus,
+        username: stores.stores.username,
+        email: stores.stores.email
     };
 }
 

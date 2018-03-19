@@ -1,8 +1,12 @@
 import {LOGIN} from '../actions/loginactions';
 import {SIGNUP} from '../actions/loginactions';
 import {LOGOUT} from '../actions/loginactions';
+import {POST} from '../actions/loginactions';
+import {DASH} from '../actions/loginactions';
+import {BID} from '../actions/loginactions';
 const initialState = {
     "stores":{
+
         "username" : 'saish',
         "email" : 'shinde',
         "status":'200',
@@ -21,9 +25,11 @@ const stores= (state = initialState, action) => {
             return {
                 ...state,
                 "stores":{
-                    "email":action.data,
+                    "email":action.data.email,
                     "login":action.data.status,
-                    "loginstatus":true,
+                    "username":action.data.Username,
+                    "userid":action.data.userid,
+                    "loginstatus":true
                 }
             }
         case SIGNUP:
@@ -45,8 +51,34 @@ const stores= (state = initialState, action) => {
                     "loginstatus":false
                 }
             }
+        case POST:
+            console.log("im here in POST store");
+            console.log(stores)
+            return {
+                ...state,
+                "stores":{
+                    "posted":action.data.value,
+                }
+            }
 
-
+        case DASH:
+            console.log("im here in DASH store");
+            console.log(stores)
+            return {
+                ...state,
+                "stores":{
+                    "dashed":action.data.value,
+                }
+            }
+        case BID:
+            console.log("im here in BID store");
+            console.log(stores)
+            return {
+                ...state,
+                "stores":{
+                    "bids":action.data,
+                }
+            }
         default :
             return state;
 

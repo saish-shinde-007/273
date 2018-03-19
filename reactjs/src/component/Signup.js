@@ -3,7 +3,8 @@ import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import {actionsign} from '../actions/loginactions';
 import {connect} from 'react-redux';
 import history from "./history";
-
+import image from './mainlogo.JPG';
+//import axios from 'axios';
 class Signup extends React.Component {
     constructor(props) {
         super(props);
@@ -11,6 +12,7 @@ class Signup extends React.Component {
             email:'',
             UserName: '',
             Password: '',
+           File:null,
             modal: false
         };
 
@@ -22,7 +24,6 @@ class Signup extends React.Component {
             modal: !this.state.modal
         });
     }
-
 
     navigate()
     {
@@ -45,7 +46,7 @@ class Signup extends React.Component {
                                 </p>
                                 <form>
                                     <div className="form-group">
-                                        <img src="mainlogo.JPG" alt="FreeLancer App"/>
+                                        <img src={image} alt="FreeLancer App"/>
                                         <h5>Sign up for free today!</h5>
                                     </div>
 
@@ -79,18 +80,44 @@ class Signup extends React.Component {
                                     </div>
 
                                     <div className="form-group">
+                                    <input
+                                        className="form-control"
+                                        type="password"
+                                        placeholder="Password"
+                                        value={this.state.Password}
+                                        onChange={(event) => {
+                                            this.setState({
+                                                Password: event.target.value
+                                            });
+                                        }}
+                                    />
+                                </div>
+                                    <div className="form-group">
+                                        <p>Profile Pic Upload</p>
                                         <input
                                             className="form-control"
-                                            type="password"
-                                            placeholder="Password"
-                                            value={this.state.Password}
+                                            type="file"
+                                            value={this.state.File}
                                             onChange={(event) => {
                                                 this.setState({
-                                                    Password: event.target.value
+                                                    File: event.target.value
                                                 });
                                             }}
                                         />
                                     </div>
+                                    {/*<div className="form-group">*/}
+                                        {/*<input*/}
+                                            {/*className="form-control"*/}
+                                            {/*type="file"*/}
+                                            {/*value={this.state.selectedFile}*/}
+                                            {/*onChange={(event) => {*/}
+                                                {/*this.setState({*/}
+                                                    {/*selectedFile: event.target.value[0]*/}
+                                                {/*});*/}
+                                            {/*}}*/}
+
+                                        {/*/>*/}
+                                    {/*</div>*/}
                                 </form>
                             </div>
                         </div>

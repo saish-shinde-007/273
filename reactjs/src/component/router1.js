@@ -6,8 +6,10 @@ import Home from "./Home";
 import postproject from "./postproject";
 import profile from "./profile";
 
+import bids from "./bids";
 import myproject from "./myproject";
 import history from "./history";
+import dashboard from "./dashboard";
 
 class router1 extends Component {
     render() {
@@ -20,6 +22,8 @@ class router1 extends Component {
                 <Route  path='/profile' component={profile}/>
                 <Route path='/postproject' component={postproject}/>
                 <Route path='/myproject' component={myproject}/>
+                <Route  path='/dashboard' component={dashboard}/>
+                <Route  path='/bids' component={bids}/>
             </Switch>
             </Router>
         );

@@ -4,6 +4,7 @@ import {actionlogin} from '../actions/loginactions';
 import {connect} from 'react-redux';
 import history from "./history";
 import image from './mainlogo.JPG';
+import { Alert } from 'reactstrap';
 
 class login extends React.Component {
     constructor(props) {
@@ -33,10 +34,11 @@ class login extends React.Component {
 
     render() {
 if (this.props.loggedin===200){
+    // {/*<Alert color="primary">*/}
+    //     {/*Loggedin Successfully!*/}
+    // {/*</Alert>*/}
     this.navigate();
 }
-
-
         return (
             <div>
                 <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
@@ -51,8 +53,9 @@ if (this.props.loggedin===200){
                                         <img src={image} alt="FreeLancer App"/>
                                         <h5>Login</h5>
                                     </div>
-
-
+                                    <Alert color="danger">
+                                        Please enter credentials!
+                                    </Alert>
                                     <div className="form-group">
                                         <input
                                             className="form-control"
@@ -104,9 +107,10 @@ const mapDispatchToProps =(dispatch)=> {
     };
 }
 const mapStateToProps =(stores)=> {
-
+console.log(stores);
     return {
-        loggedin : stores.stores.login
+        loggedin : stores.stores.login,
+       // userid
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(login);
